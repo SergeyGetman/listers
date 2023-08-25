@@ -140,9 +140,9 @@ const GarageNewCarInformation: FC<IGarageNewCarInformation> = ({ readySubmit }) 
                 {t('garageHub.MainInformationBlock.title')}
               </HeaderOnlyTitleGeneralInformation>
             </Grid>
-            <Grid xs={12} sm={11} md={2} lg={2} spacing={1} item>
-              <Grid container rowSpacing={{ xs: '16px', sm: '16px' }} maxWidth="900px" columnSpacing="24px">
-                <Grid lg={3.5} md={3.5} sm={3} xs={6} item>
+            <Grid item xs={12} sm={10}>
+              <Grid sx={{padding: '0px 16px'}} container rowSpacing={{ xs: '16px', sm: '16px' }} maxWidth="900px" columnSpacing="24px">
+                <Grid xs={12} sm={6} md={6} item>
                   <Controller
                     name="year"
                     control={control}
@@ -168,7 +168,7 @@ const GarageNewCarInformation: FC<IGarageNewCarInformation> = ({ readySubmit }) 
                   />
                 </Grid>
 
-                <Grid lg={6} md={3.5} sm={3} xs={6} item>
+                <Grid xs={12} sm={6} md={6} item>
                   <Controller
                     name="make"
                     control={control}
@@ -194,37 +194,8 @@ const GarageNewCarInformation: FC<IGarageNewCarInformation> = ({ readySubmit }) 
                     }}
                   />
                 </Grid>
-                <Grid
-                  xs={12}
-                  lg={3.5}
-                  md={6}
-                  sm={3}
-                  item
-                  sx={{
-                    opacity: '1',
-                    display: isMobileDisplay ? 'none' : isTabletDisplay ? 'none' : 'flex',
-                    backgroundColor: theme.palette.case.neutral.n800,
-                  }}
-                >
-                  <Controller
-                    name="make"
-                    control={control}
-                    render={({ field, fieldState }) => (
-                      <MuiSelect
-                        {...field}
-                        isSearchable
-                        isClearable
-                        label={t('garageHub.moreDetailsBlock.moreDetailsSelectsLabel.interiorColor')}
-                        placeholder={t('garageHub.moreDetailsBlock.moreDetailsSelectsLabel.interiorColor')}
-                        options={rest.colorTypeOptions}
-                        isError={!!fieldState?.error?.message}
-                        helpText={fieldState?.error?.message}
-                      />
-                    )}
-                  />
-                </Grid>
 
-                <Grid xs={12} lg={6} md={6} sm={5} item>
+                <Grid xs={12} sm={6} md={6} item>
                   <Controller
                     name="model"
                     control={control}
