@@ -1,0 +1,154 @@
+image: node:16
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          name: Install NPM packages
+          caches:
+            - node
+          script:
+            - yarn
+      - step:
+          name: Build site
+          size: 2x
+          caches:
+            - node
+          script:
+            - |
+              echo "REACT_APP_API_HOST=https://test.user.hubmee.org
+                    REACT_APP_PROMO_HOST=https://hubmee.org
+                    REACT_APP_HOST=https://web.hubmee.org
+                    REACT_APP_API_SOCIAL=https://user.new.hubmee.org
+                    REACT_APP_STRIPE_KEY=pk_test_51JKPaSLDgoD27FRPaThJNV42peXg0wnmmT0xYsvR52Qnobjy7dYReVgN9OIgcucAL11dZn4VK6qFphw63WUgLL4D00WxzkwXLn
+                    REACT_APP_FB_APP_ID=1414689175263767
+                    REACT_APP_GG_APP_ID=701754399377-hp9bkoi2f4t00l43fd6np4qh9abil0og.apps.googleusercontent.com
+                    REACT_APP_APPLE_APP_ID=com.hubmee.app.client
+                    REACT_APP_FIREBASE_API_KEY=AIzaSyB-xLqnMwB0zmBrG5OCE2q_5i-XcnaJ-l0
+                    REACT_APP_FIREBASE_AUTH_DOMAIN=hubmee-294017.firebaseapp.com
+                    REACT_APP_FIREBASE_PROJECT_ID=hubmee-294017
+                    REACT_APP_FIREBASE_STORAGE_BUCKET=hubmee-294017.appspot.com
+                    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=32760041861
+                    REACT_APP_FIREBASE_APP_ID=1:32760041861:web:73151dfe6fafa1d56e74ec
+                    REACT_APP_FIREBASE_VAID_KEY=BEMHVXihH-Akna-kNl4TSnyKf21GmfHISFyTnof3CdUaNFuk0ms5fpXe3Q4StLKsZtUUCONw-ySztazzSGwXoxY
+              " > .env
+            - export NODE_OPTIONS=--max_old_space_size=4096
+            - yarn build --max-old-space-size=4096
+          artifacts:
+          - build/**
+#      - step:
+#          name: Build storybook
+#          size: 2x
+#          caches:
+#            - node
+#          script:
+#            - yarn build-storybook
+#          artifacts:
+#          - storybook-static/**
+      - step:
+          name: Upload to a Server
+          deployment: develop
+          script:
+            - scp -rp ./build/* ubuntu@hubmee.org:/var/www/html/new.hubmee.org/
+              #scp -rp ./storybook-static/* ubuntu@hubmee.org:/var/www/html/storybook.hubmee.org/
+    stage:
+      - step:
+          name: Install NPM packages
+          caches:
+            - node
+          script:
+            - yarn
+      - step:
+          name: Build site
+          size: 2x
+          caches:
+            - node
+          script:
+            - |
+              echo "REACT_APP_API_HOST=https://test.user.hubmee.org
+              REACT_APP_API_STORAGE=https://test.user.hubmee.org
+              REACT_APP_PROMO_HOST=https://hubmee.org
+              REACT_APP_HOST=https://web.hubmee.org
+              REACT_APP_API_SOCIAL=https://user.hubmee.org
+              REACT_APP_STRIPE_KEY=pk_test_51JKPaSLDgoD27FRPaThJNV42peXg0wnmmT0xYsvR52Qnobjy7dYReVgN9OIgcucAL11dZn4VK6qFphw63WUgLL4D00WxzkwXLn
+              REACT_APP_FB_APP_ID=1414689175263767
+              REACT_APP_GG_APP_ID=701754399377-hp9bkoi2f4t00l43fd6np4qh9abil0og.apps.googleusercontent.com
+              REACT_APP_APPLE_APP_ID=com.hubmee.app.client
+              REACT_APP_FIREBASE_API_KEY=AIzaSyB-xLqnMwB0zmBrG5OCE2q_5i-XcnaJ-l0
+              REACT_APP_FIREBASE_AUTH_DOMAIN=hubmee-294017.firebaseapp.com
+              REACT_APP_FIREBASE_PROJECT_ID=hubmee-294017
+              REACT_APP_FIREBASE_STORAGE_BUCKET=hubmee-294017.appspot.com
+              REACT_APP_FIREBASE_MESSAGING_SENDER_ID=32760041861
+              REACT_APP_FIREBASE_APP_ID=1:32760041861:web:73151dfe6fafa1d56e74ec
+              REACT_APP_FIREBASE_VAID_KEY=BEMHVXihH-Akna-kNl4TSnyKf21GmfHISFyTnof3CdUaNFuk0ms5fpXe3Q4StLKsZtUUCONw-ySztazzSGwXoxY
+              " > .env
+            - yarn build
+          artifacts:
+          - build/**
+      # - step:
+      #    name: Build storybook
+      #    size: 2x
+      #    caches:
+      #      - node
+      #    script:
+      #      - yarn build-storybook
+      #    artifacts:
+      #    - storybook-static/**
+      - step:
+          name: Upload to a Server
+          deployment: stage
+          script:
+            - scp -rp ./build/* ubuntu@hubmee.org:/var/www/html/hubmee-web/
+            #- scp -rp ./storybook-static/* ubuntu@hubmee.org:/var/www/html/storybook.hubmee.org/
+    master:
+      - step:
+          name: Install NPM packages
+          caches:
+            - node
+          script:
+            - yarn
+      - step:
+          name: Build site
+          size: 2x
+          caches:
+            - node
+          script:
+            - |
+              echo "REACT_APP_API_HOST=https://api.hubmee.com
+              REACT_APP_ENV=production
+              REACT_APP_GTM_ID=GTM-W4PWL7P
+              REACT_APP_API_STORAGE=https://api.hubmee.com
+              REACT_APP_PROMO_HOST=https://hubmee.com
+              REACT_APP_HOST=https://web.hubmee.com
+              REACT_APP_API_SOCIAL=https://api.hubmee.com
+              REACT_APP_STRIPE_KEY=pk_live_c3Cpww2D0dipsF3ADOMu3qd000UrK9hUJu
+              REACT_APP_FB_APP_ID=3424978624292823
+              REACT_APP_GG_APP_ID=32760041861-hu72hkmc4fpo89g8pords072ka0584qp.apps.googleusercontent.com
+              REACT_APP_APPLE_APP_ID=com.hubmee.app.client
+              REACT_APP_FIREBASE_API_KEY=AIzaSyB-xLqnMwB0zmBrG5OCE2q_5i-XcnaJ-l0
+              REACT_APP_FIREBASE_AUTH_DOMAIN=hubmee-294017.firebaseapp.com
+              REACT_APP_FIREBASE_PROJECT_ID=hubmee-294017
+              REACT_APP_FIREBASE_STORAGE_BUCKET=hubmee-294017.appspot.com
+              REACT_APP_FIREBASE_MESSAGING_SENDER_ID=32760041861
+              REACT_APP_FIREBASE_APP_ID=1:32760041861:web:73151dfe6fafa1d56e74ec
+              REACT_APP_FIREBASE_VAID_KEY=BEMHVXihH-Akna-kNl4TSnyKf21GmfHISFyTnof3CdUaNFuk0ms5fpXe3Q4StLKsZtUUCONw-ySztazzSGwXoxY
+              " > .env
+            - yarn build
+          artifacts:
+          - build/**
+      #- step:
+      #    name: Build storybook
+      #    size: 2x
+      #    caches:
+      #      - node
+      #    script:
+      #      - yarn build-storybook
+      #    artifacts:
+      #    - storybook-static/**
+      - step:
+          name: Upload to a Server
+          deployment: production
+          script:
+            - scp -rp ./build/* ubuntu@hubmee.com:/var/www/html/hubmee-web/
+          
+            #- scp -rp ./storybook-static/* ubuntu@hubmee.com:/var/www/html/storybook.hubmee.com/

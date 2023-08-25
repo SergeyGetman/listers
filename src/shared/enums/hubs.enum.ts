@@ -1,0 +1,17 @@
+export enum HubsEnum {
+  education = 'education',
+  profile = 'profile',
+  pets = 'pets',
+  health = 'health',
+  budget = 'budget',
+  property = 'property',
+  backlog = 'backlog',
+  events = 'events',
+  garage = 'garage',
+  roadmap = 'roadmap',
+  storage = 'storage',
+  work = 'work',
+  planner = 'planner',
+  calendar = 'calendar',
+  archive = 'archive',
+}

@@ -1,0 +1,40 @@
+.PhoneInput {
+  position: relative;
+  width: 100%;
+  .PhoneInputCountry {
+    z-index: 1;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 33px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .PhoneInputCountryIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13px;
+    height: 13px;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .PhoneInputCountrySelect {
+    opacity: 0;
+    width: 1px;
+    visibility: hidden;
+  }
+}
+.phone-number-input_without-label {
+  .PhoneInputCountry {
+    top: 8px;
+  }
+}

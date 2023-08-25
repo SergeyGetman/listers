@@ -1,0 +1,2 @@
+import GarageOpenItemLicencePlateSticker from './GarageOpenItemLicencePlateSticker';
+export default GarageOpenItemLicencePlateSticker;

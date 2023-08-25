@@ -1,0 +1,2 @@
+import ProfileGeneralInformationModalContainer from './ProfileGeneralInformationModalContainer';
+export default ProfileGeneralInformationModalContainer;

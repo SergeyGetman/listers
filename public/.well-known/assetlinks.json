@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hubmee.app",
+      "sha256_cert_fingerprints": [
+        "57:7D:CE:F7:80:3E:68:EA:EB:DB:9D:90:21:51:0D:09:0B:E3:37:B8:6D:A9:AA:F8:F2:83:4F:B0:7F:25:F1:10",
+        "1C:72:7F:57:89:70:0D:11:A4:80:0F:22:85:B0:D3:8E:46:56:3B:31:DD:0B:D2:3D:3E:E6:FA:1F:ED:09:15:FF"
+      ]
+    }
+  }
+]

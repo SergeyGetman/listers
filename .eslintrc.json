@@ -1,0 +1,68 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
+
+  "ignorePatterns": ["src/lib"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*"],
+        "peerDependencies": true
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react/jsx-uses-react": ["off"],
+    "react/react-in-jsx-scope": ["off"],
+    "import/prefer-default-export": ["off"],
+    "import/newline-after-import": "off",
+    "no-param-reassign": ["off"],
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "no-nested-ternary": ["off"],
+    "no-shadow": "off",
+    "react/no-array-index-key": "off",
+    "import/no-cycle": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "func-names": "off",
+    "no-extra-boolean-cast": "off",
+    "object-shorthand": "off",
+    "return-await": "off",
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/default-param-last": "off",
+    "prefer-destructuring" : "off",
+    "react/no-unstable-nested-components": "off",
+    "no-unneeded-ternary": "off",
+    "no-lonely-if": "off",
+    "no-plusplus": "off",
+    "@typescript-eslint/naming-convention": "off"
+  }
+}

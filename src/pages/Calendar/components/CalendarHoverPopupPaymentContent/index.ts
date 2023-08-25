@@ -1,0 +1,2 @@
+import CalendarHoverPopupPaymentContent from './CalendarHoverPopupPaymentContent';
+export default CalendarHoverPopupPaymentContent;

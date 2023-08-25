@@ -1,0 +1,2 @@
+import ProfileGeneralInformationContainer from './ProfileGeneralInformationContainer';
+export default ProfileGeneralInformationContainer;

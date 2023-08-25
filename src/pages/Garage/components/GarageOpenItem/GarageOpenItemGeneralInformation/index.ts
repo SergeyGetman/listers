@@ -1,0 +1,2 @@
+import GarageOpenItemGeneralInformation from './GarageOpenItemGeneralInformation';
+export default GarageOpenItemGeneralInformation;

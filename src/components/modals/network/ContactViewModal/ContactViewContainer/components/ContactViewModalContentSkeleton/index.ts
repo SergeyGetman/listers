@@ -1,0 +1,2 @@
+import ContactViewModalContentSkeleton from './ContactViewModalContentSkeleton';
+export default ContactViewModalContentSkeleton;

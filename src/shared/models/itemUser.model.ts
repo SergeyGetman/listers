@@ -1,0 +1,27 @@
+import { AvatarModel } from './avatar.model';
+import { PlannerItemStatusesEnum } from '../enums/plannerItemStatuses.enum';
+import { UserContactModel } from './userContact.model';
+import { AssignPeoplePermissionsEnum } from '../enums/assignPeoplePermissions.enum';
+export type ItemUserModel = {
+  avatar: AvatarModel;
+  connection_role: string | null;
+  contacts?: UserContactModel | null;
+  first_name: string;
+  is_deleted?: boolean;
+  full_name?: string;
+  entity_type: string | null;
+  last_name: string;
+  id: number;
+  is_can_view_media?: boolean;
+  is_fake?: number;
+  chat_id?: number;
+  birth_day?: string;
+  gender?: string;
+  package?: string;
+  role?: AssignPeoplePermissionsEnum | null;
+  isOwner?: boolean;
+  status?: PlannerItemStatusesEnum;
+  recurring_group?: number | null;
+  phone?: string;
+  email?: string;
+};

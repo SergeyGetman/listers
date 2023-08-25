@@ -1,0 +1,3 @@
+import GarageGeneralInformationDescriptionBlock from './GarageGeneralInformationDescriptionBlock';
+
+export default GarageGeneralInformationDescriptionBlock;

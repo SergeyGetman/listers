@@ -1,0 +1,2 @@
+import EditNetworkConnectionContainerSkeleton from './EditNetworkConnectionContainerSkeleton';
+export default EditNetworkConnectionContainerSkeleton;

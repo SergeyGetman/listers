@@ -1,0 +1,2 @@
+import UserProfileModalContentSkeleton from './UserProfileModalContentSkeleton';
+export default UserProfileModalContentSkeleton;

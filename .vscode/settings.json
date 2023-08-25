@@ -1,0 +1,6 @@
+{
+    "i18n-ally.localesPaths": [
+        "src/shared/locales"
+    ],
+    "i18next.i18nPaths": "/Users/ivan/projects/hubmee2.0/src/shared/locales/index.ts"
+}
